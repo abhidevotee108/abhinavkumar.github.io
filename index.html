@@ -1,224 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUGGERNAUT — Sacred Tech & Devotional Momentum</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS Relative Link -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhinav Kumar — Product Manager, AI Integration</title>
+<meta name="description" content="Abhinav Kumar — Product Manager, AI Integration at IBM. Building the governed integration fabric that enterprise AI agents run on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <span class="logo-dot"></span> JUGGERNAUT
-            </a>
-            <ul class="nav-links">
-                <li><a href="#origin" class="nav-link">Origin</a></li>
-                <li><a href="#architecture" class="nav-link">Architecture</a></li>
-                <li><a href="#journal" class="nav-link">Journal</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-                ☀️ / 🌙
-            </button>
-        </div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__mark">AK<span class="nav__mark-dot">.</span></a>
+    <nav class="nav__routes" aria-label="Primary">
+      <a href="#about" data-route="/about"><span class="nav__slash">/</span>about</a>
+      <a href="#focus" data-route="/focus"><span class="nav__slash">/</span>focus</a>
+      <a href="#work" data-route="/work"><span class="nav__slash">/</span>work</a>
+      <a href="#writing" data-route="/writing"><span class="nav__slash">/</span>writing</a>
+      <a href="#contact" data-route="/contact"><span class="nav__slash">/</span>contact</a>
     </nav>
+    <a class="nav__cta" href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="#about">/about</a>
+    <a href="#focus">/focus</a>
+    <a href="#work">/work</a>
+    <a href="#writing">/writing</a>
+    <a href="#contact">/contact</a>
+    <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</header>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="container hero-content">
-            <span class="section-label">Vedic Wisdom Meets Systems Tech</span>
-            <h1 class="hero-title">Relentless Momentum.</h1>
-            <p class="hero-subtitle">Architecting high-performance digital engines with the unwavering spirit of classical devotion and sacred precision.</p>
-            <div class="hero-actions">
-                <a href="#origin" class="btn btn-primary">Explore Origin</a>
-                <a href="#journal" class="btn btn-secondary">Read Journal</a>
-            </div>
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow" data-reveal>GET&nbsp;/status&nbsp;→&nbsp;200&nbsp;OK&nbsp;· Bengaluru, IN</p>
+      <h1 class="hero__title" data-reveal>
+        Abhinav Kumar
+      </h1>
+      <p class="hero__role" data-reveal>Product Manager, AI Integration — IBM</p>
+      <p class="hero__thesis" data-reveal>
+        Everyone points a camera at the agent. I build what the agent stands on:
+        the governed APIs, integration fabric, and data pathways that let
+        enterprise AI actually reach production — without falling over.
+      </p>
+      <div class="hero__actions" data-reveal>
+        <a href="#work" class="btn btn--primary">See the work</a>
+        <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener" class="btn btn--ghost">Connect on LinkedIn</a>
+      </div>
+      <dl class="hero__stats" data-reveal>
+        <div>
+          <dt>Focus</dt>
+          <dd>Agentic AI × Enterprise Integration</dd>
         </div>
-    </header>
-
-    <!-- ORIGIN SECTION -->
-    <section id="origin" class="section-padding origin-section">
-        <div class="container">
-            <div class="origin-grid">
-                <div class="origin-text">
-                    <span class="section-label">The Sacred Wheel</span>
-                    <h2 class="section-title">The Principle of Unstoppable Energy</h2>
-                    <div class="origin-highlight">
-                        "When intention aligns with universal order, momentum becomes perpetual."
-                    </div>
-                    <p>Inspired by the massive chariots of Jagannath Puri—from which the word <em>Juggernaut</em> entered the English lexicon—our software design philosophy embraces momentum that cannot be halted by friction.</p>
-                </div>
-                <div class="origin-visual">
-                    <div class="momentum-wheel"></div>
-                    <div class="momentum-core"></div>
-                </div>
-            </div>
+        <div>
+          <dt>Platform</dt>
+          <dd>IBM webMethods &amp; API Connect</dd>
         </div>
-    </section>
-
-    <!-- KNOWLEDGE / ARCHITECTURE (BENTO GRID) -->
-    <section id="architecture" class="section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Core Pillars</span>
-                <h2 class="section-title">Sacred Tech Engineering</h2>
-            </div>
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <div>
-                        <h3 class="bento-title">Deterministic State</h3>
-                        <p class="bento-desc">Pure functional pipelines mirroring order and harmony.</p>
-                    </div>
-                </div>
-                <div class="bento-card">
-                    <div>
-                        <h3 class="bento-title">Zero-Entropy Code</h3>
-                        <p class="bento-desc">Rigorous modular boundaries that resist tech debt accumulation.</p>
-                    </div>
-                </div>
-                <div class="bento-card">
-                    <div>
-                        <h3 class="bento-title">High-Inertia Scale</h3>
-                        <p class="bento-desc">Backpressure-managed streaming designed for infinite throughput.</p>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <dt>Education</dt>
+          <dd>MBA, IIM Ahmedabad</dd>
         </div>
-    </section>
-
-    <!-- TABBED ABOUT / TIMELINE -->
-    <section class="section-padding origin-section">
-        <div class="container">
-            <div class="about-tabs">
-                <button class="tab-btn active" data-tab="philosophy">Philosophy</button>
-                <button class="tab-btn" data-tab="evolution">Evolution</button>
-            </div>
-
-            <div id="tab-philosophy" class="tab-content active">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">FOUNDATION</div>
-                        <h3 class="timeline-role">Sankalpa (Focused Intent)</h3>
-                        <p class="timeline-desc">Every line of code serves a single, clear purpose without excess or ambient noise.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">STRUCTURE</div>
-                        <h3 class="timeline-role">Ritambhara (Orderly Truth)</h3>
-                        <p class="timeline-desc">Systems constructed upon clean immutable invariants rather than defensive workarounds.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tab-evolution" class="tab-content">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">PHASE I</div>
-                        <h3 class="timeline-role">Monolithic Craftsmanship</h3>
-                        <p class="timeline-desc">Perfecting core domain models with sacred attention to detail.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">PHASE II</div>
-                        <h3 class="timeline-role">Distributed Chariot Engine</h3>
-                        <p class="timeline-desc">Decoupling systems into resilient micro-services running in high harmony.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- JOURNAL / BLOG WITH FILTER -->
-    <section id="journal" class="section-padding">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Written Wisdom</span>
-                <h2 class="section-title">The Journal</h2>
-            </div>
-
-            <div class="blog-filter">
-                <button class="filter-chip active" data-filter="all">All Entries</button>
-                <button class="filter-chip" data-filter="tech">Engineering</button>
-                <button class="filter-chip" data-filter="philosophy">Philosophy</button>
-            </div>
-
-            <div class="articles-grid">
-                <article class="article-card" data-category="tech" data-article-id="1">
-                    <div>
-                        <div class="article-meta">
-                            <span>ENGINEERING</span> • <span>5 MIN READ</span>
-                        </div>
-                        <h3 class="article-title">Architecting Unstoppable Systems: The Engineering Behind Juggernaut</h3>
-                        <p class="article-excerpt">How event-driven pipelines and fault tolerance keep large systems moving forward without friction.</p>
-                    </div>
-                </article>
-
-                <article class="article-card" data-category="philosophy" data-article-id="2">
-                    <div>
-                        <div class="article-meta">
-                            <span>PHILOSOPHY</span> • <span>4 MIN READ</span>
-                        </div>
-                        <h3 class="article-title">Vedic Wisdom Meets High-Performance Software Architecture</h3>
-                        <p class="article-excerpt">Connecting ancient principles of order and intent to modern distributed software design.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROTATING WISDOM QUOTE -->
-    <section class="section-padding quote-section">
-        <div class="container">
-            <div class="quote-box">
-                <p id="quote-text" class="quote-text">“In relentless momentum, intention transforms into an unstoppable reality.”</p>
-                <span id="quote-author" class="quote-author">The Juggernaut Principle</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="newsletter-card">
-                <span class="section-label">Join The Movement</span>
-                <h2 class="section-title">Receive Sacred Tech Dispatch</h2>
-                <form id="newsletter-form" class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address..." required>
-                    <button type="submit" class="btn btn-primary">Subscribe 🙏</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <p>© JUGGERNAUT — Sacred Tech Engine.</p>
-            <ul class="social-links">
-                <li><a href="#" class="nav-link">GitHub</a></li>
-                <li><a href="#" class="nav-link">Twitter / X</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- ARTICLE READING MODAL -->
-    <div id="article-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="modal-close" class="modal-close">✕</button>
-            <h2 id="modal-title" style="margin-bottom: 1.5rem;"></h2>
-            <div id="modal-body"></div>
-        </div>
+      </dl>
     </div>
 
-    <!-- JS Relative Link -->
-    <script src="assets/js/main.js"></script>
+    <div class="hero__diagram" aria-hidden="true">
+      <svg viewBox="0 0 560 560" class="fabric" id="fabricSvg">
+        <!-- connecting lines -->
+        <g class="fabric__lines" stroke="url(#lineGrad)" stroke-width="1.4" fill="none">
+          <path d="M 60 110 C 160 140, 190 220, 280 280" />
+          <path d="M 55 300 C 150 300, 190 290, 280 280" />
+          <path d="M 70 470 C 160 430, 200 340, 280 280" />
+          <path d="M 500 90 C 400 130, 370 220, 280 280" />
+          <path d="M 505 290 C 400 290, 360 285, 280 280" />
+          <path d="M 495 460 C 390 420, 350 340, 280 280" />
+        </g>
+        <g class="fabric__pulse" stroke="var(--amber)" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M 60 110 C 160 140, 190 220, 280 280" />
+          <path d="M 500 90 C 400 130, 370 220, 280 280" />
+          <path d="M 70 470 C 160 430, 200 340, 280 280" />
+        </g>
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3FA9A0" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#E2A63B" stop-opacity="0.55"/>
+          </linearGradient>
+        </defs>
+
+        <!-- peripheral system nodes -->
+        <g class="fabric__node" transform="translate(60,110)">
+          <circle r="26" />
+          <text y="46" text-anchor="middle">CRM</text>
+        </g>
+        <g class="fabric__node" transform="translate(55,300)">
+          <circle r="26" />
+          <text y="46" text-anchor="middle">ERP</text>
+        </g>
+        <g class="fabric__node" transform="translate(70,470)">
+          <circle r="26" />
+          <text y="46" text-anchor="middle">LEGACY</text>
+        </g>
+        <g class="fabric__node" transform="translate(500,90)">
+          <circle r="26" />
+          <text y="46" text-anchor="middle">AI AGENT</text>
+        </g>
+        <g class="fabric__node" transform="translate(505,290)">
+          <circle r="26" />
+          <text y="46" text-anchor="middle">ANALYTICS</text>
+        </g>
+        <g class="fabric__node" transform="translate(495,460)">
+          <circle r="26" />
+          <text y="46" text-anchor="middle">PORTAL</text>
+        </g>
+
+        <!-- central gateway -->
+        <g class="fabric__hub" transform="translate(280,280)">
+          <circle r="46" class="fabric__hub-ring" />
+          <circle r="34" class="fabric__hub-core" />
+          <text y="6" text-anchor="middle">AK</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span></span>scroll</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section section--paper" id="about">
+  <div class="container">
+    <p class="section__eyebrow">/about</p>
+    <div class="about__grid">
+      <h2 class="section__title">
+        I make sure the integration layer is boring, reliable, and invisible —
+        so the AI built on top of it doesn't have to be.
+      </h2>
+      <div class="about__body">
+        <p>
+          I'm a Product Manager on IBM's AI Integration team, working across
+          <strong>webMethods Hybrid Integration</strong> and
+          <strong>API Connect</strong> — the platforms enterprises use to
+          connect systems, govern data exchange, and now, wire up AI agents
+          to real operational work.
+        </p>
+        <p>
+          My lens on this space comes from an MBA at
+          <strong>IIM Ahmedabad</strong> paired with hands-on product work
+          in enterprise software. I spend most of my time translating
+          between two audiences that rarely speak the same language:
+          architects who live in the weeds of APIs and governance, and
+          leadership chasing the next AI initiative — and making sure
+          neither one ships something the other has to clean up later.
+        </p>
+        <p>
+          Based in Bengaluru, and usually thinking about the same question
+          from a few different angles: what does an enterprise actually
+          need to be true — technically, operationally, organizationally —
+          before an AI agent can be trusted with real work.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOCUS ===== -->
+<section class="section section--ink" id="focus">
+  <div class="container">
+    <p class="section__eyebrow">/focus</p>
+    <h2 class="section__title section__title--light">Where I spend my attention</h2>
+    <div class="focus__grid">
+      <article class="focus__card" data-reveal>
+        <span class="focus__index">req.route&nbsp;01</span>
+        <h3>Agentic AI, held up by real infrastructure</h3>
+        <p>The agent gets the headline. I care about the governed APIs and
+        data pathways underneath it — the part that decides whether the
+        agent can actually be trusted with production work.</p>
+      </article>
+      <article class="focus__card" data-reveal>
+        <span class="focus__index">req.route&nbsp;02</span>
+        <h3>Enterprise integration &amp; iPaaS</h3>
+        <p>Hybrid integration across on-prem and cloud, B2B and MFT,
+        and the unglamorous plumbing that keeps large organizations
+        running without anyone noticing it's there.</p>
+      </article>
+      <article class="focus__card" data-reveal>
+        <span class="focus__index">req.route&nbsp;03</span>
+        <h3>API management &amp; governance</h3>
+        <p>Designing for the moment an API stops being an internal
+        convenience and becomes a contract — versioned, secured,
+        observable, and safe to build a business on.</p>
+      </article>
+      <article class="focus__card" data-reveal>
+        <span class="focus__index">req.route&nbsp;04</span>
+        <h3>Digital government &amp; cross-agency data exchange</h3>
+        <p>Drawn to public-sector integration platforms — the quiet
+        infrastructure that lets national systems share verified data
+        across agencies without duplicating it everywhere.</p>
+      </article>
+      <article class="focus__card" data-reveal>
+        <span class="focus__index">req.route&nbsp;05</span>
+        <h3>Enterprise architecture</h3>
+        <p>Systems thinking applied to messy, real organizations —
+        legacy estates, acquired subsidiaries, and the politics of
+        who owns which data.</p>
+      </article>
+      <article class="focus__card" data-reveal>
+        <span class="focus__index">req.route&nbsp;06</span>
+        <h3>Product management for platforms</h3>
+        <p>Roadmapping for a product whose users are other builders —
+        where the real deliverable is leverage, not a feature.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK / ROLE ===== -->
+<section class="section section--paper" id="work">
+  <div class="container">
+    <p class="section__eyebrow">/work</p>
+    <h2 class="section__title">Currently</h2>
+    <div class="timeline">
+      <div class="timeline__item" data-reveal>
+        <div class="timeline__marker">
+          <span class="timeline__dot"></span>
+          <span class="timeline__line"></span>
+        </div>
+        <div class="timeline__content">
+          <p class="timeline__meta">IBM · Bengaluru</p>
+          <h3>Product Manager, AI Integration</h3>
+          <p>
+            Working on IBM webMethods Hybrid Integration and API Connect —
+            the layer that lets enterprises connect systems, govern APIs,
+            and extend that same discipline to AI agents. Focused on
+            turning "the AI agent worked in the demo" into "the AI agent
+            is trusted with production traffic."
+          </p>
+          <ul class="timeline__tags">
+            <li>webMethods</li>
+            <li>API Connect</li>
+            <li>Hybrid Integration</li>
+            <li>Agentic AI</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline__item" data-reveal>
+        <div class="timeline__marker">
+          <span class="timeline__dot timeline__dot--muted"></span>
+        </div>
+        <div class="timeline__content">
+          <p class="timeline__meta">IIM Ahmedabad</p>
+          <h3>MBA</h3>
+          <p>
+            Business fundamentals layered on top of an engineering
+            instinct for how systems actually behave — the combination
+            that ended up defining how I approach platform product work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WRITING ===== -->
+<section class="section section--ink" id="writing">
+  <div class="container">
+    <p class="section__eyebrow">/writing</p>
+    <h2 class="section__title section__title--light">Ideas I keep coming back to</h2>
+    <p class="section__intro">
+      Notes and posts on integration, platforms, and what "AI-ready"
+      actually requires of an enterprise underneath the surface.
+    </p>
+    <div class="writing__grid">
+      <article class="writing__card" data-reveal>
+        <p class="writing__tag">#AgenticAI #Integration</p>
+        <h3>The agent gets the credit. The integration fabric does the work.</h3>
+        <p>
+          Most of the national and enterprise systems now enabling "AI
+          achievements" — governed data exchanges, secure APIs, shared
+          service fabrics — were built years before this model cycle.
+          The agent is the visible layer on top of infrastructure that
+          already had to earn enterprise trust the hard way.
+        </p>
+      </article>
+      <article class="writing__card" data-reveal>
+        <p class="writing__tag">#iPaaS #EnterpriseArchitecture</p>
+        <h3>Operational efficiency is a feature, not a footnote</h3>
+        <p>
+          Cleaner interfaces, saner runtime key management, automatic
+          cleanup of stale instances — the unglamorous releases are
+          usually the ones that determine whether a platform team
+          actually wants to keep using your product.
+        </p>
+      </article>
+      <article class="writing__card" data-reveal>
+        <p class="writing__tag">#APIManagement #DigitalGovernment</p>
+        <h3>What public-sector integration gets right</h3>
+        <p>
+          Systems built for cross-agency data exchange are forced to
+          solve governance, consent, and interoperability before they're
+          allowed to scale. Enterprises building AI agents are running
+          into the same requirements — just later, and under more
+          pressure.
+        </p>
+      </article>
+    </div>
+    <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener" class="writing__more">Read more on LinkedIn ↗</a>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section section--paper contact" id="contact">
+  <div class="container contact__grid">
+    <div>
+      <p class="section__eyebrow">/contact</p>
+      <h2 class="section__title">
+        Open to conversations on integration, platforms, and where
+        enterprise AI is actually headed.
+      </h2>
+      <p class="contact__note">
+        Best reached on LinkedIn — that's where most of these
+        conversations start anyway.
+      </p>
+    </div>
+    <div class="contact__panel">
+      <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener" class="contact__row">
+        <span>LinkedIn</span>
+        <span class="contact__value">/in/linkabhinav ↗</span>
+      </a>
+      <div class="contact__row">
+        <span>Role</span>
+        <span class="contact__value">Product Manager, AI Integration — IBM</span>
+      </div>
+      <div class="contact__row">
+        <span>Based in</span>
+        <span class="contact__value">Bengaluru, India</span>
+      </div>
+      <div class="contact__row">
+        <span>Status</span>
+        <span class="contact__value contact__status"><span class="dot"></span>Building the fabric</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© <span id="year"></span> Abhinav Kumar. Built with a little help from Claude.</p>
+    <a href="#top" class="footer__top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
 </body>
 </html>
