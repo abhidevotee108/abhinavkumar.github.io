@@ -1,140 +1,164 @@
+/* ==========================================================================
+   JUGGERNAUT — SACRED TECH / ISKCON BHAKTI ENGINE (main.js)
+   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. INITIALIZE LUCIDE ICONS
-    if (window.lucide) {
-        lucide.createIcons();
-    }
 
-    // 2. THEME MANAGEMENT (Dark / Light Mode)
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const sunIcon = document.getElementById('theme-icon-sun');
-    const moonIcon = document.getElementById('theme-icon-moon');
-
-    function setTheme(theme) {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
-            if (sunIcon) sunIcon.style.display = 'none';
-            if (moonIcon) moonIcon.style.display = 'inline-block';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.add('light');
-            document.documentElement.classList.remove('dark');
-            if (sunIcon) sunIcon.style.display = 'inline-block';
-            if (moonIcon) moonIcon.style.display = 'none';
-            localStorage.setItem('theme', 'light');
-        }
-    }
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(isDark ? 'light' : 'dark');
-        });
-    }
-
-    // 3. HERO CANVAS BACKGROUND ANIMATION
+    /* ----------------------------------------------------------------------
+       1. HERO PARTICLE CANVAS (SACRED SAFFRON & GOLD PARTICLES)
+       ---------------------------------------------------------------------- */
     const canvas = document.getElementById('hero-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        let particles = [];
+        let particlesArray = [];
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
         }
-        window.addEventListener('resize', resizeCanvas);
+
         resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 1.5 + 0.5;
+                this.radius = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.alpha = Math.random() * 0.6 + 0.2;
             }
 
             update() {
-                this.x += this.vx;
-                this.y += this.vy;
+                this.x += this.speedX;
+                this.y += this.speedY;
 
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
 
             draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent-ibm').trim();
+                
+                // Fetch Kesar Saffron accent color from CSS variables
+                const kesarColor = getComputedStyle(document.documentElement)
+                    .getPropertyValue('--accent-kesar').trim() || '#FF7D00';
+                
+                ctx.fillStyle = kesarColor;
                 ctx.fill();
+                ctx.restore();
             }
         }
 
-        for (let i = 0; i < 60; i++) {
-            particles.push(new Particle());
+        function initParticles() {
+            particlesArray = [];
+            const particleCount = Math.floor((canvas.width * canvas.height) / 12000);
+            for (let i = 0; i < particleCount; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            const maxDistance = 120;
+            const kesarColor = getComputedStyle(document.documentElement)
+                .getPropertyValue('--accent-kesar').trim() || '#FF7D00';
+
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a + 1; b < particlesArray.length; b++) {
+                    const dx = particlesArray[a].x - particlesArray[b].x;
+                    const dy = particlesArray[a].y - particlesArray[b].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        ctx.save();
+                        ctx.globalAlpha = (1 - distance / maxDistance) * 0.15;
+                        ctx.strokeStyle = kesarColor;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
+            }
         }
 
         function animateCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connectParticles();
             requestAnimationFrame(animateCanvas);
         }
+
+        initParticles();
         animateCanvas();
     }
 
-    // 4. TAB NAVIGATION SYSTEM
-    const tabButtons = document.querySelectorAll('.tab-btn');
+    /* ----------------------------------------------------------------------
+       2. DARK / LIGHT MODE TOGGLE (CHANDAN LIGHT & OBSIDIAN DARK)
+       ---------------------------------------------------------------------- */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('juggernaut-theme');
+    
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('juggernaut-theme', isDark ? 'dark' : 'light');
+        });
+    }
+
+    /* ----------------------------------------------------------------------
+       3. ABOUT / TIMELINE TABBED NAVIGATION
+       ---------------------------------------------------------------------- */
+    const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tabId = button.getAttribute('data-tab');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
 
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
 
-            button.classList.add('active');
-            const activeTab = document.getElementById(tabId);
-            if (activeTab) activeTab.classList.add('active');
+            btn.classList.add('active');
+            const activeContent = document.getElementById(`tab-${targetTab}`);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
         });
     });
 
-    // 5. ARTICLE FILTER SYSTEM
+    /* ----------------------------------------------------------------------
+       4. BLOG FILTER SYSTEM
+       ---------------------------------------------------------------------- */
     const filterChips = document.querySelectorAll('.filter-chip');
     const articleCards = document.querySelectorAll('.article-card');
 
     filterChips.forEach(chip => {
         chip.addEventListener('click', () => {
-            const filter = chip.getAttribute('data-filter');
-
             filterChips.forEach(c => c.classList.remove('active'));
             chip.classList.add('active');
 
+            const filterValue = chip.getAttribute('data-filter');
+
             articleCards.forEach(card => {
                 const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
+                if (filterValue === 'all' || category === filterValue) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -143,79 +167,115 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. ARTICLE MODAL SYSTEM
+    /* ----------------------------------------------------------------------
+       5. INTERACTIVE ARTICLE MODAL
+       ---------------------------------------------------------------------- */
     const modalOverlay = document.getElementById('article-modal');
+    const modalCloseBtn = document.getElementById('modal-close');
     const modalTitle = document.getElementById('modal-title');
-    const modalMeta = document.getElementById('modal-meta');
     const modalBody = document.getElementById('modal-body');
-    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    const articlesData = {
+        1: {
+            title: "Architecting Unstoppable Systems: The Engineering Behind Juggernaut",
+            body: `<p>Just as the massive Rath Yatra chariots move forward with relentless momentum, modern software architectures must be engineered to sustain scale without collapsing under pressure.</p>
+                   <p>In this deep dive, we explore event-driven pipelines, distributed consensus algorithms, and fault-tolerant state persistence.</p>
+                   <blockquote class="origin-highlight">"Dynamic inertia is not an accident; it is the result of deliberate alignment."</blockquote>`
+        },
+        2: {
+            title: "Vedic Wisdom Meets High-Performance Software Architecture",
+            body: `<p>The timeless principles of Vedic philosophy offer profound lessons for modern systems engineers. Concepts like <em>Sankalpa</em> (focused intent) map directly to deterministic state management.</p>`
+        },
+        3: {
+            title: "Building Micro-Frontends with Clean Component Boundaries",
+            body: `<p>Monolithic frontends often turn into fragile webs of tight coupling. Micro-frontends decompose application surfaces into independent, isolated domains.</p>`
+        },
+        4: {
+            title: "The Physics of Digital Momentum: From Rath Yatra to Real-Time Data",
+            body: `<p>The word <strong>Juggernaut</strong> stems from Jagannath—the Lord of the Universe whose chariot cannot be halted. Real-time streaming platforms embody this same principle.</p>`
+        }
+    };
 
     articleCards.forEach(card => {
         card.addEventListener('click', () => {
-            const title = card.getAttribute('data-title');
-            const readtime = card.getAttribute('data-readtime');
-            const lead = card.getAttribute('data-lead');
-            const body = card.getAttribute('data-body');
+            const articleId = card.getAttribute('data-article-id');
+            const data = articlesData[articleId];
 
-            if (modalTitle) modalTitle.innerText = title;
-            if (modalMeta) modalMeta.innerText = `ANALYSIS • ${readtime}`;
-            if (modalBody) {
-                modalBody.innerHTML = `
-                    <p style="font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">${lead}</p>
-                    <p>${body}</p>
-                `;
+            if (data && modalOverlay) {
+                if (modalTitle) modalTitle.innerText = data.title;
+                if (modalBody) modalBody.innerHTML = data.body;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-
-            if (modalOverlay) modalOverlay.classList.add('active');
         });
     });
 
-    if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-    }
+    if (modalCloseBtn && modalOverlay) {
+        modalCloseBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
 
-    if (modalOverlay) {
         modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
     }
 
-    function closeModal() {
-        if (modalOverlay) modalOverlay.classList.remove('active');
-    }
-
-    // 7. DYNAMIC QUOTE ROTATION
+    /* ----------------------------------------------------------------------
+       6. WISDOM PULL-QUOTE ROTATING CAROUSEL
+       ---------------------------------------------------------------------- */
     const quotes = [
-        { text: '"Technology shapes the future. Character shapes the people who build it."', label: '— PRINCIPLE I' },
-        { text: '"Discipline creates freedom."', label: '— PRINCIPLE II' },
-        { text: '"The strongest people are quietly consistent."', label: '— PRINCIPLE III' },
-        { text: '"Build systems, not excuses."', label: '— PRINCIPLE IV' },
-        { text: '"Success without purpose is merely motion."', label: '— PRINCIPLE V' }
+        {
+            text: "“In relentless momentum, intention transforms into an unstoppable reality.”",
+            author: "The Juggernaut Principle"
+        },
+        {
+            text: "“Order is not created by force, but by aligning every component with universal law.”",
+            author: "Vedic Systems Insight"
+        },
+        {
+            text: "“Simplicity is the ultimate devotion to elegance and performance.”",
+            author: "Bhakti Tech Canon"
+        }
     ];
 
-    let quoteIdx = 0;
-    const quoteTextEl = document.getElementById('dynamic-quote');
-    const quoteAuthorEl = document.getElementById('dynamic-quote-author');
+    let currentQuoteIndex = 0;
+    const quoteTextEl = document.getElementById('quote-text');
+    const quoteAuthorEl = document.getElementById('quote-author');
 
-    setInterval(() => {
-        quoteIdx = (quoteIdx + 1) % quotes.length;
-        if (quoteTextEl) {
+    if (quoteTextEl && quoteAuthorEl) {
+        setInterval(() => {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
             quoteTextEl.style.opacity = '0';
             setTimeout(() => {
-                quoteTextEl.innerText = quotes[quoteIdx].text;
-                if (quoteAuthorEl) quoteAuthorEl.innerText = quotes[quoteIdx].label;
+                quoteTextEl.innerText = quotes[currentQuoteIndex].text;
+                quoteAuthorEl.innerText = quotes[currentQuoteIndex].author;
                 quoteTextEl.style.opacity = '1';
             }, 300);
-        }
-    }, 6000);
+        }, 6000);
+    }
 
-    // 8. FORM SUBMISSION HANDLER
+    /* ----------------------------------------------------------------------
+       7. NEWSLETTER SUBSCRIPTION HANDLER
+       ---------------------------------------------------------------------- */
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Welcome to the journey. Dispatch confirmation active.');
-            newsletterForm.reset();
+            const input = newsletterForm.querySelector('.newsletter-input');
+            const btn = newsletterForm.querySelector('button');
+
+            if (input && input.value) {
+                const originalText = btn.innerText;
+                btn.innerText = "Subscribed! 🙏";
+                input.value = "";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 3500);
+            }
         });
     }
 });
