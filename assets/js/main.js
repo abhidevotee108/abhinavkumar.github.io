@@ -1,5 +1,5 @@
 /* ==========================================================================
-   JUGGERNAUT — SACRED TECH / ISKCON BHAKTI ENGINE (main.js)
+   JUGGERNAUT — SACRED TECH / ISKCON BHAKTI ENGINE (assets/js/main.js)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -185,14 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         2: {
             title: "Vedic Wisdom Meets High-Performance Software Architecture",
             body: `<p>The timeless principles of Vedic philosophy offer profound lessons for modern systems engineers. Concepts like <em>Sankalpa</em> (focused intent) map directly to deterministic state management.</p>`
-        },
-        3: {
-            title: "Building Micro-Frontends with Clean Component Boundaries",
-            body: `<p>Monolithic frontends often turn into fragile webs of tight coupling. Micro-frontends decompose application surfaces into independent, isolated domains.</p>`
-        },
-        4: {
-            title: "The Physics of Digital Momentum: From Rath Yatra to Real-Time Data",
-            body: `<p>The word <strong>Juggernaut</strong> stems from Jagannath—the Lord of the Universe whose chariot cannot be halted. Real-time streaming platforms embody this same principle.</p>`
         }
     };
 
