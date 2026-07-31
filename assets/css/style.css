@@ -1,32 +1,52 @@
-/* CSS RESET & VARIABLES */
+/* ==========================================================================
+   JUGGERNAUT — ISKCON / BHAKTI SACRED TECH DESIGN SYSTEM
+   ========================================================================== */
+
 :root {
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F8F9FA;
-    --bg-surface: #F1F3F5;
-    --text-primary: #111111;
-    --text-secondary: #555555;
-    --text-muted: #888888;
-    --accent-ibm: #0F62FE;
-    --accent-hover: #0353E9;
-    --border-color: #E5E7EB;
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    /* Sandalwood & Cream Canvas */
+    --bg-primary: #FAF8F5;       /* Warm Chandan Off-White */
+    --bg-secondary: #F3EEE7;     /* Soft Vedic Clay / Cream */
+    --bg-surface: #E8E0D5;       /* Elevated Warm Surface */
+    
+    /* Deep Earthy Typography */
+    --text-primary: #1C130E;     /* Deep Mahogany Charcoal */
+    --text-secondary: #5C4A3E;   /* Warm Terracotta Slate */
+    --text-muted: #8C786B;
+    
+    /* Sacred Bhakti Colors */
+    --accent-kesar: #E65100;     /* Pure Kesar Saffron */
+    --accent-sindoor: #C62828;   /* Royal Sindoor Vermilion */
+    --accent-gold: #D4AF37;      /* Temple Gold */
+    --accent-glow: rgba(230, 81, 0, 0.15); /* Saffron Glow */
+    
+    --border-color: #E2D7C7;     /* Warm Clay Border */
+    --card-shadow: 0 10px 30px -5px rgba(198, 40, 40, 0.08);
+    
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html.dark {
-    --bg-primary: #0A0A0C;
-    --bg-secondary: #121215;
-    --bg-surface: #1A1A1E;
-    --text-primary: #F4F4F6;
-    --text-secondary: #A1A1AA;
-    --text-muted: #66666E;
-    --accent-ibm: #4589FF;
-    --accent-hover: #78A9FF;
-    --border-color: #27272A;
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    /* Royal Midnight & Teak Canvas */
+    --bg-primary: #0D0B0E;       /* Sacred Midnight Obsidian */
+    --bg-secondary: #161219;     /* Dark Teak Surface */
+    --bg-surface: #221A26;       /* Deep Lotus Purple-Charcoal */
+    
+    /* Crisp Devotional Typography */
+    --text-primary: #FAF5EF;     /* Pure Chandan Cream */
+    --text-secondary: #C8B9A6;   /* Warm Ash Gray */
+    --text-muted: #807162;
+    
+    /* Electric Saffron & Gold for Dark Mode */
+    --accent-kesar: #FF7D00;     /* Vibrant Electric Saffron */
+    --accent-sindoor: #EF5350;   /* Bright Vermilion */
+    --accent-gold: #FFD700;      /* Luminous Gold */
+    --accent-glow: rgba(255, 125, 0, 0.25);
+    
+    --border-color: #2D2333;
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
 }
 
 *, *::before, *::after {
@@ -82,15 +102,15 @@ a {
     left: 0;
     width: 100%;
     z-index: 1000;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(250, 248, 245, 0.85);
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition-smooth);
 }
 
 html.dark .navbar {
-    background: rgba(10, 10, 12, 0.8);
+    background: rgba(13, 11, 14, 0.85);
 }
 
 .nav-container {
@@ -107,14 +127,16 @@ html.dark .navbar {
     letter-spacing: -0.04em;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
+    color: var(--text-primary);
 }
 
 .logo-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-ibm);
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, var(--accent-kesar), var(--accent-sindoor));
     border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-kesar);
 }
 
 .nav-links {
@@ -131,15 +153,15 @@ html.dark .navbar {
 }
 
 .nav-link:hover {
-    color: var(--accent-ibm);
+    color: var(--accent-kesar);
 }
 
 .theme-toggle {
     background: none;
-    border: none;
+    border: 1px solid var(--border-color);
     color: var(--text-primary);
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,6 +171,7 @@ html.dark .navbar {
 
 .theme-toggle:hover {
     background-color: var(--bg-surface);
+    border-color: var(--accent-kesar);
 }
 
 /* HERO SECTION */
@@ -168,7 +191,7 @@ html.dark .navbar {
     width: 100%;
     height: 100%;
     z-index: 0;
-    opacity: 0.6;
+    opacity: 0.75;
     pointer-events: none;
 }
 
@@ -181,7 +204,7 @@ html.dark .navbar {
 .hero-title {
     font-size: clamp(3.5rem, 8vw, 6.5rem);
     margin-bottom: 2rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    background: linear-gradient(135deg, var(--text-primary) 20%, var(--accent-kesar) 70%, var(--accent-sindoor) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -207,7 +230,7 @@ html.dark .navbar {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-    border-radius: 4px;
+    border-radius: 6px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
@@ -216,13 +239,14 @@ html.dark .navbar {
 }
 
 .btn-primary {
-    background-color: var(--accent-ibm);
+    background: linear-gradient(135deg, var(--accent-kesar), var(--accent-sindoor));
     color: #FFFFFF;
+    box-shadow: 0 4px 15px var(--accent-glow);
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-hover);
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(230, 81, 0, 0.35);
 }
 
 .btn-secondary {
@@ -233,7 +257,7 @@ html.dark .navbar {
 
 .btn-secondary:hover {
     background-color: var(--bg-surface);
-    border-color: var(--text-secondary);
+    border-color: var(--accent-kesar);
 }
 
 /* SECTION HEADERS */
@@ -244,11 +268,12 @@ html.dark .navbar {
 .section-label {
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--accent-ibm);
+    color: var(--accent-kesar);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     margin-bottom: 1rem;
     display: block;
+    font-weight: 600;
 }
 
 .section-title {
@@ -280,9 +305,11 @@ html.dark .navbar {
     font-family: var(--font-heading);
     font-size: 1.8rem;
     color: var(--text-primary);
-    border-left: 3px solid var(--accent-ibm);
-    padding-left: 1.5rem;
+    border-left: 4px solid var(--accent-kesar);
+    background: linear-gradient(90deg, var(--accent-glow) 0%, transparent 100%);
+    padding: 1.25rem 1.75rem;
     margin: 2.5rem 0;
+    border-radius: 0 8px 8px 0;
     font-style: italic;
 }
 
@@ -295,21 +322,22 @@ html.dark .navbar {
 }
 
 .momentum-wheel {
-    width: 300px;
-    height: 300px;
-    border: 1px dashed var(--accent-ibm);
+    width: 320px;
+    height: 320px;
+    border: 2px dashed var(--accent-kesar);
     border-radius: 50%;
     position: absolute;
     animation: rotateWheel 40s linear infinite;
+    box-shadow: 0 0 35px var(--accent-glow);
 }
 
 .momentum-core {
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, var(--accent-ibm) 0%, transparent 70%);
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, var(--accent-sindoor) 0%, var(--accent-kesar) 50%, transparent 75%);
     border-radius: 50%;
-    opacity: 0.15;
-    filter: blur(20px);
+    opacity: 0.35;
+    filter: blur(25px);
 }
 
 @keyframes rotateWheel {
@@ -328,7 +356,7 @@ html.dark .navbar {
     background-color: var(--bg-primary);
     border: 1px solid var(--border-color);
     padding: 2.5rem;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
@@ -338,13 +366,14 @@ html.dark .navbar {
 }
 
 .bento-card:hover {
-    border-color: var(--accent-ibm);
+    border-color: var(--accent-kesar);
     transform: translateY(-4px);
     box-shadow: var(--card-shadow);
+    background-color: var(--bg-surface);
 }
 
 .bento-icon {
-    color: var(--accent-ibm);
+    color: var(--accent-kesar);
     margin-bottom: 1.5rem;
 }
 
@@ -380,6 +409,7 @@ html.dark .navbar {
 
 .tab-btn.active {
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .tab-btn.active::after {
@@ -388,8 +418,8 @@ html.dark .navbar {
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 2px;
-    background-color: var(--accent-ibm);
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-kesar), var(--accent-sindoor));
 }
 
 .tab-content {
@@ -403,7 +433,7 @@ html.dark .navbar {
 .timeline {
     position: relative;
     padding-left: 2rem;
-    border-left: 1px solid var(--border-color);
+    border-left: 2px solid var(--border-color);
 }
 
 .timeline-item {
@@ -414,19 +444,21 @@ html.dark .navbar {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: calc(-2rem - 5px);
+    left: calc(-2rem - 6px);
     top: 0.25rem;
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: var(--accent-ibm);
+    background-color: var(--accent-kesar);
+    box-shadow: 0 0 10px var(--accent-kesar);
 }
 
 .timeline-date {
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--accent-ibm);
+    color: var(--accent-kesar);
     margin-bottom: 0.25rem;
+    font-weight: 600;
 }
 
 .timeline-role {
@@ -458,9 +490,9 @@ html.dark .navbar {
 }
 
 .filter-chip.active, .filter-chip:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-primary);
-    border-color: var(--text-primary);
+    background: linear-gradient(135deg, var(--accent-kesar), var(--accent-sindoor));
+    color: #FFFFFF;
+    border-color: transparent;
 }
 
 .articles-grid {
@@ -472,7 +504,7 @@ html.dark .navbar {
 .article-card {
     background-color: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
@@ -482,8 +514,9 @@ html.dark .navbar {
 }
 
 .article-card:hover {
-    border-color: var(--accent-ibm);
+    border-color: var(--accent-kesar);
     transform: translateY(-4px);
+    box-shadow: var(--card-shadow);
 }
 
 .article-meta {
@@ -525,20 +558,22 @@ html.dark .navbar {
     margin-bottom: 1.5rem;
     line-height: 1.3;
     transition: opacity 0.3s ease;
+    color: var(--text-primary);
 }
 
 .quote-author {
     font-family: var(--font-mono);
-    color: var(--accent-ibm);
+    color: var(--accent-kesar);
     font-size: 0.9rem;
     text-transform: uppercase;
+    font-weight: 600;
 }
 
 /* NEWSLETTER */
 .newsletter-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 4rem 2rem;
     text-align: center;
     max-width: 800px;
@@ -555,7 +590,7 @@ html.dark .navbar {
 .newsletter-input {
     flex: 1;
     padding: 1rem 1.25rem;
-    border-radius: 4px;
+    border-radius: 6px;
     border: 1px solid var(--border-color);
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -564,7 +599,7 @@ html.dark .navbar {
 }
 
 .newsletter-input:focus {
-    border-color: var(--accent-ibm);
+    border-color: var(--accent-kesar);
 }
 
 /* FOOTER */
@@ -594,7 +629,7 @@ html.dark .navbar {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(13, 11, 14, 0.75);
     backdrop-filter: blur(8px);
     z-index: 2000;
     display: flex;
@@ -618,7 +653,7 @@ html.dark .navbar {
     max-height: 85vh;
     overflow-y: auto;
     padding: 3rem;
-    border-radius: 8px;
+    border-radius: 10px;
     position: relative;
 }
 
