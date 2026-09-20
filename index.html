@@ -1,364 +1,1360 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abhinav Kumar — Product Manager, AI Integration</title>
-<meta name="description" content="Abhinav Kumar — Product Manager, AI Integration at IBM. Building the governed integration fabric that enterprise AI agents run on.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhinav Kumar — Product Manager, AI Integration</title>
+  
+  <!-- Typography: Instrument Serif, Inter, and JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & VARIABLES
+       ========================================================================== */
+    :root {
+      /* Palette */
+      --bg-dark: #0A0E18;
+      --bg-dark-surface: #111726;
+      --text-dark-primary: #E8ECEF;
+      --text-dark-muted: #8A94A6;
+      
+      --bg-cream: #F6F2EA;
+      --bg-cream-surface: #EFE9DE;
+      --text-cream-primary: #141824;
+      --text-cream-muted: #5C6473;
+      
+      --accent-gold: #C9A227;
+      --accent-gold-faint: rgba(201, 162, 39, 0.12);
+      --accent-gold-glow: rgba(201, 162, 39, 0.25);
+
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --border-dark-strong: rgba(255, 255, 255, 0.16);
+      --border-cream: rgba(0, 0, 0, 0.08);
+      --border-cream-strong: rgba(0, 0, 0, 0.18);
+
+      /* Fonts */
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      background-color: var(--bg-dark);
+      color: var(--text-dark-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+    }
+
+    /* Typography Helpers */
+    .font-serif { font-family: var(--font-serif); }
+    .font-sans { font-family: var(--font-sans); }
+    .font-mono { font-family: var(--font-mono); }
+
+    .text-gold { color: var(--accent-gold); }
+
+    /* Layout Containers */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* Section Bands */
+    .section-dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark-primary);
+      padding: 7rem 0;
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .section-cream {
+      background-color: var(--bg-cream);
+      color: var(--text-cream-primary);
+      padding: 7rem 0;
+      border-bottom: 1px solid var(--border-cream);
+    }
+
+    /* Hairline Dividers & Badges */
+    .hairline-dark { border-color: var(--border-dark); }
+    .hairline-cream { border-color: var(--border-cream); }
+
+    .meta-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .meta-tag-dark {
+      background: var(--bg-dark-surface);
+      border: 1px solid var(--border-dark);
+      color: var(--text-dark-muted);
+    }
+
+    .meta-tag-cream {
+      background: var(--bg-cream-surface);
+      border: 1px solid var(--border-cream-strong);
+      color: var(--text-cream-muted);
+    }
+
+    .route-prefix {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 14, 24, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+      transition: all 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+
+    .brand-logo {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--text-dark-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-gold);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 8px var(--accent-gold);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dark-muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--accent-gold);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-dark-primary);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-outline {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      background: transparent;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-gold-faint);
+      color: #FFFFFF;
+      border-color: #E2C054;
+    }
+
+    /* Mobile Nav Toggle */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-dark-primary);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      padding-top: 7rem;
+      padding-bottom: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background-color: var(--bg-dark);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4rem;
+      align-items: center;
+      margin: auto 0;
+    }
+
+    .hero-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .hero-name {
+      font-family: var(--font-sans);
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text-dark-primary);
+    }
+
+    .hero-manifesto {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+      line-height: 1.25;
+      color: #F0F4F8;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    .hero-body {
+      font-size: 1.05rem;
+      color: var(--text-dark-muted);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Hero System Canvas Visual */
+    .canvas-container {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #systemCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-dark);
+      margin-top: 2rem;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dark-muted);
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--accent-gold), transparent);
+    }
+
+    .status-terminal {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dark-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-dark-surface);
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px;
+    }
+
+    .status-badge {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10B981;
+      box-shadow: 0 0 6px #10B981;
+    }
+
+    /* ==========================================================================
+       SECTION 1: /ABOUT (Editorial Cream)
+       ========================================================================== */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--text-cream-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .about-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      font-size: 1.05rem;
+      color: var(--text-cream-muted);
+      line-height: 1.7;
+    }
+
+    .about-copy p strong {
+      color: var(--text-cream-primary);
+      font-weight: 600;
+    }
+
+    .about-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-cream-strong);
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .spec-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .spec-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-cream-primary);
+    }
+
+    /* ==========================================================================
+       SECTION 2: /FOCUS (Dark Architecture Grid)
+       ========================================================================== */
+    .focus-header-group {
+      margin-bottom: 4rem;
+    }
+
+    .focus-headline {
+      font-family: var(--font-sans);
+      font-size: clamp(1.8rem, 3vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-dark-primary);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .focus-card {
+      background: var(--bg-dark-surface);
+      border: 1px solid var(--border-dark);
+      padding: 2.25rem;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .focus-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+
+    .focus-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .focus-route {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.08em;
+    }
+
+    .focus-title {
+      font-family: var(--font-sans);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-dark-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .focus-desc {
+      font-size: 0.95rem;
+      color: var(--text-dark-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 3: /WORK (Cream Provenance Timeline)
+       ========================================================================== */
+    .work-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+      margin-top: 3rem;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border-cream);
+    }
+
+    .work-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .work-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .work-period {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-cream-muted);
+    }
+
+    .work-company {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-cream-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .work-location {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+    }
+
+    .work-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .work-role {
+      font-family: var(--font-sans);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-cream-primary);
+    }
+
+    .work-summary {
+      font-size: 1rem;
+      color: var(--text-cream-muted);
+      line-height: 1.65;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ==========================================================================
+       SECTION 4: /WRITING (Dark Notes & Monograph)
+       ========================================================================== */
+    .writing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .writing-card {
+      background: var(--bg-dark-surface);
+      border: 1px solid var(--border-dark);
+      padding: 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .writing-card:hover {
+      border-color: var(--accent-gold);
+      background: rgba(17, 23, 38, 0.9);
+    }
+
+    .writing-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .writing-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dark-muted);
+    }
+
+    .writing-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text-dark-primary);
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+
+    .writing-card:hover .writing-title {
+      color: var(--accent-gold);
+    }
+
+    .writing-excerpt {
+      font-size: 0.95rem;
+      color: var(--text-dark-muted);
+      line-height: 1.6;
+    }
+
+    .writing-tags {
+      display: flex;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+    }
+
+    /* ==========================================================================
+       SECTION 5: /CONTACT & FOOTER
+       ========================================================================== */
+    .contact-section {
+      text-align: center;
+      padding: 8rem 0;
+    }
+
+    .contact-invitation {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.15;
+      color: var(--text-dark-primary);
+      max-width: 900px;
+      margin: 0 auto 3rem auto;
+      font-style: italic;
+    }
+
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .btn-large-gold {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 2.25rem;
+      border: 1px solid var(--accent-gold);
+      color: var(--bg-dark);
+      background: var(--accent-gold);
+      text-decoration: none;
+      border-radius: 2px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-large-gold:hover {
+      background: #E2C054;
+      border-color: #E2C054;
+      box-shadow: 0 0 20px var(--accent-gold-glow);
+    }
+
+    .btn-large-outline {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 2.25rem;
+      border: 1px solid var(--border-dark-strong);
+      color: var(--text-dark-primary);
+      background: transparent;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-large-outline:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-dark);
+      padding: 2.5rem 0;
+      background: var(--bg-dark);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dark-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .canvas-container {
+        max-width: 380px;
+      }
+
+      .about-split {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .mobile-menu-active .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 4.5rem;
+        left: 0;
+        width: 100%;
+        background: var(--bg-dark);
+        border-bottom: 1px solid var(--border-dark);
+        padding: 2rem;
+        gap: 1.5rem;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .btn-large-gold, .btn-large-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
+  <!-- FIXED SLIM NAVIGATION -->
+  <header id="mainNav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="brand-logo">
+          <span class="brand-dot"></span>
+          ABHINAV KUMAR
+        </a>
 
-<!-- ===== NAV ===== -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="#top" class="nav__mark">Abhinav Kumar<span class="nav__mark-dot">.</span></a>
-    <nav class="nav__routes" aria-label="Primary">
-      <a href="#about" data-route="/about"><span class="nav__slash">/</span>About</a>
-      <a href="#focus" data-route="/focus"><span class="nav__slash">/</span>Focus</a>
-      <a href="#work" data-route="/work"><span class="nav__slash">/</span>Work</a>
-      <a href="#writing" data-route="/writing"><span class="nav__slash">/</span>Writing</a>
-      <a href="#contact" data-route="/contact"><span class="nav__slash">/</span>Contact</a>
-    </nav>
-    <a class="nav__cta" href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener">LinkedIn ↗</a>
-    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav__mobile" id="navMobile">
-    <a href="#about">/about</a>
-    <a href="#focus">/focus</a>
-    <a href="#work">/work</a>
-    <a href="#writing">/writing</a>
-    <a href="#contact">/contact</a>
-    <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener">LinkedIn ↗</a>
-  </div>
-</header>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <div class="hero__grid">
-    <div class="hero__copy">
-      <p class="eyebrow" data-reveal>GET&nbsp;/status&nbsp;→&nbsp;200&nbsp;OK&nbsp;· Bengaluru, IN</p>
-      <h1 class="hero__title" data-reveal>
-        Abhinav Kumar
-      </h1>
-      <p class="hero__role" data-reveal>Product Manager, AI Integration — IBM</p>
-      <p class="hero__thesis" data-reveal>
-        Everyone points a camera at the agent. I build what the agent stands on:
-        the governed APIs, integration fabric, and data pathways that let
-        enterprise AI actually reach production — without falling over.
-      </p>
-      <div class="hero__actions" data-reveal>
-        <a href="#work" class="btn btn--primary">See the work</a>
-        <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener" class="btn btn--ghost">Connect on LinkedIn</a>
-      </div>
-      <dl class="hero__stats" data-reveal>
-        <div>
-          <dt>Focus</dt>
-          <dd>Agentic AI × Enterprise Integration</dd>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about" class="nav-link">/about</a></li>
+          <li><a href="#focus" class="nav-link">/focus</a></li>
+          <li><a href="#work" class="nav-link">/work</a></li>
+          <li><a href="#writing" class="nav-link">/writing</a></li>
+          <li><a href="#contact" class="nav-link">/contact</a></li>
+        </ul>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <a href="https://www.linkedin.com/in/abhinavkumar" target="_blank" rel="noopener" class="btn-outline">
+            LinkedIn <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i>
+          </a>
         </div>
-        <div>
-          <dt>Platform</dt>
-          <dd>IBM webMethods &amp; API Connect</dd>
-        </div>
-        <div>
-          <dt>Education</dt>
-          <dd>MBA, IIM Ahmedabad</dd>
-        </div>
-      </dl>
-    </div>
-
-    <div class="hero__diagram" aria-hidden="true">
-      <svg viewBox="0 0 560 560" class="fabric" id="fabricSvg">
-        <!-- connecting lines -->
-        <g class="fabric__lines" stroke="url(#lineGrad)" stroke-width="1.4" fill="none">
-          <path d="M 60 110 C 160 140, 190 220, 280 280" />
-          <path d="M 55 300 C 150 300, 190 290, 280 280" />
-          <path d="M 70 470 C 160 430, 200 340, 280 280" />
-          <path d="M 500 90 C 400 130, 370 220, 280 280" />
-          <path d="M 505 290 C 400 290, 360 285, 280 280" />
-          <path d="M 495 460 C 390 420, 350 340, 280 280" />
-        </g>
-        <g class="fabric__pulse" stroke="var(--amber)" stroke-width="2" fill="none" stroke-linecap="round">
-          <path d="M 60 110 C 160 140, 190 220, 280 280" />
-          <path d="M 500 90 C 400 130, 370 220, 280 280" />
-          <path d="M 70 470 C 160 430, 200 340, 280 280" />
-        </g>
-        <defs>
-          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#3FA9A0" stop-opacity="0.55"/>
-            <stop offset="1" stop-color="#E2A63B" stop-opacity="0.55"/>
-          </linearGradient>
-        </defs>
-
-        <!-- peripheral system nodes -->
-        <g class="fabric__node" transform="translate(60,110)">
-          <circle r="26" />
-          <text y="46" text-anchor="middle">CRM</text>
-        </g>
-        <g class="fabric__node" transform="translate(55,300)">
-          <circle r="26" />
-          <text y="46" text-anchor="middle">ERP</text>
-        </g>
-        <g class="fabric__node" transform="translate(70,470)">
-          <circle r="26" />
-          <text y="46" text-anchor="middle">LEGACY</text>
-        </g>
-        <g class="fabric__node" transform="translate(500,90)">
-          <circle r="26" />
-          <text y="46" text-anchor="middle">AI AGENT</text>
-        </g>
-        <g class="fabric__node" transform="translate(505,290)">
-          <circle r="26" />
-          <text y="46" text-anchor="middle">ANALYTICS</text>
-        </g>
-        <g class="fabric__node" transform="translate(495,460)">
-          <circle r="26" />
-          <text y="46" text-anchor="middle">PORTAL</text>
-        </g>
-
-        <!-- central gateway -->
-        <g class="fabric__hub" transform="translate(280,280)">
-          <circle r="46" class="fabric__hub-ring" />
-          <circle r="34" class="fabric__hub-core" />
-          <text y="6" text-anchor="middle">AK</text>
-        </g>
-      </svg>
-    </div>
-  </div>
-  <div class="hero__scroll" aria-hidden="true"><span></span>scroll</div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section class="section section--paper" id="about">
-  <div class="container">
-    <p class="section__eyebrow">/about</p>
-    <div class="about__grid">
-      <h2 class="section__title">
-        I make sure the integration layer is boring, reliable, and invisible —
-        so the AI built on top of it doesn't have to be.
-      </h2>
-      <div class="about__body">
-        <p>
-          I'm a Product Manager on IBM's AI Integration team, working across
-          <strong>webMethods Hybrid Integration</strong> and
-          <strong>API Connect</strong> — the platforms enterprises use to
-          connect systems, govern data exchange, and now, wire up AI agents
-          to real operational work.
-        </p>
-        <p>
-          My lens on this space comes from an MBA at
-          <strong>IIM Ahmedabad</strong> paired with hands-on product work
-          in enterprise software. I spend most of my time translating
-          between two audiences that rarely speak the same language:
-          architects who live in the weeds of APIs and governance, and
-          leadership chasing the next AI initiative — and making sure
-          neither one ships something the other has to clean up later.
-        </p>
-        <p>
-          Based in Bengaluru, and usually thinking about the same question
-          from a few different angles: what does an enterprise actually
-          need to be true — technically, operationally, organizationally —
-          before an AI agent can be trusted with real work.
-        </p>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ===== FOCUS ===== -->
-<section class="section section--ink" id="focus">
-  <div class="container">
-    <p class="section__eyebrow">/focus</p>
-    <h2 class="section__title section__title--light">Where I spend my attention</h2>
-    <div class="focus__grid">
-      <article class="focus__card" data-reveal>
-        <span class="focus__index">req.route&nbsp;01</span>
-        <h3>Agentic AI, held up by real infrastructure</h3>
-        <p>The agent gets the headline. I care about the governed APIs and
-        data pathways underneath it — the part that decides whether the
-        agent can actually be trusted with production work.</p>
-      </article>
-      <article class="focus__card" data-reveal>
-        <span class="focus__index">req.route&nbsp;02</span>
-        <h3>Enterprise integration &amp; iPaaS</h3>
-        <p>Hybrid integration across on-prem and cloud, B2B and MFT,
-        and the unglamorous plumbing that keeps large organizations
-        running without anyone noticing it's there.</p>
-      </article>
-      <article class="focus__card" data-reveal>
-        <span class="focus__index">req.route&nbsp;03</span>
-        <h3>API management &amp; governance</h3>
-        <p>Designing for the moment an API stops being an internal
-        convenience and becomes a contract — versioned, secured,
-        observable, and safe to build a business on.</p>
-      </article>
-      <article class="focus__card" data-reveal>
-        <span class="focus__index">req.route&nbsp;04</span>
-        <h3>Digital government &amp; cross-agency data exchange</h3>
-        <p>Drawn to public-sector integration platforms — the quiet
-        infrastructure that lets national systems share verified data
-        across agencies without duplicating it everywhere.</p>
-      </article>
-      <article class="focus__card" data-reveal>
-        <span class="focus__index">req.route&nbsp;05</span>
-        <h3>Enterprise architecture</h3>
-        <p>Systems thinking applied to messy, real organizations —
-        legacy estates, acquired subsidiaries, and the politics of
-        who owns which data.</p>
-      </article>
-      <article class="focus__card" data-reveal>
-        <span class="focus__index">req.route&nbsp;06</span>
-        <h3>Product management for platforms</h3>
-        <p>Roadmapping for a product whose users are other builders —
-        where the real deliverable is leverage, not a feature.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WORK / ROLE ===== -->
-<section class="section section--paper" id="work">
-  <div class="container">
-    <p class="section__eyebrow">/work</p>
-    <h2 class="section__title">Currently</h2>
-    <div class="timeline">
-      <div class="timeline__item" data-reveal>
-        <div class="timeline__marker">
-          <span class="timeline__dot"></span>
-          <span class="timeline__line"></span>
-        </div>
-        <div class="timeline__content">
-          <p class="timeline__meta">IBM · Bengaluru</p>
-          <h3>Product Manager, AI Integration</h3>
-          <p>
-            Working on IBM webMethods Hybrid Integration and API Connect —
-            the layer that lets enterprises connect systems, govern APIs,
-            and extend that same discipline to AI agents. Focused on
-            turning "the AI agent worked in the demo" into "the AI agent
-            is trusted with production traffic."
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Left Hero Content -->
+        <div class="hero-title-group">
+          <span class="hero-role">REQ.ROUTE 00 // SYSTEM_OPERATOR</span>
+          <h1 class="hero-name">Abhinav Kumar</h1>
+          <div class="hero-manifesto">
+            “Everyone points a camera at the agent. I build what the agent stands on.”
+          </div>
+          <p class="hero-body">
+            Product Manager specializing in AI Integration & Agentic Orchestration. Architecting resilient context protocols, semantic runtime buses, and high-throughput evaluation systems for enterprise platforms.
           </p>
-          <ul class="timeline__tags">
-            <li>webMethods</li>
-            <li>API Connect</li>
-            <li>Hybrid Integration</li>
-            <li>Agentic AI</li>
-          </ul>
+
+          <div class="hero-chips">
+            <span class="meta-tag meta-tag-dark">
+              <i class="fa-solid fa-microchip text-gold"></i> FOCUS: AGENTIC ORCHESTRATION
+            </span>
+            <span class="meta-tag meta-tag-dark">
+              <i class="fa-solid fa-network-wired text-gold"></i> PLATFORM: IBM WEBMETHODS
+            </span>
+            <span class="meta-tag meta-tag-dark">
+              <i class="fa-solid fa-graduation-cap text-gold"></i> ALUM: IIM AHMEDABAD
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Hero System Graph (Canvas) -->
+        <div class="canvas-container">
+          <canvas id="systemCanvas" width="480" height="480"></canvas>
         </div>
       </div>
-      <div class="timeline__item" data-reveal>
-        <div class="timeline__marker">
-          <span class="timeline__dot timeline__dot--muted"></span>
+
+      <!-- Hero Footer Status Indicator -->
+      <div class="container hero-footer">
+        <div class="scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>SCROLL TO SYSTEM ARCHITECTURE</span>
         </div>
-        <div class="timeline__content">
-          <p class="timeline__meta">IIM Ahmedabad</p>
-          <h3>MBA</h3>
-          <p>
-            Business fundamentals layered on top of an engineering
-            instinct for how systems actually behave — the combination
-            that ended up defining how I approach platform product work.
-          </p>
+
+        <div class="status-terminal">
+          <span class="status-badge"></span>
+          <span>GET /status → 200 OK · San Francisco / Global</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===== WRITING ===== -->
-<section class="section section--ink" id="writing">
-  <div class="container">
-    <p class="section__eyebrow">/writing</p>
-    <h2 class="section__title section__title--light">Ideas I keep coming back to</h2>
-    <p class="section__intro">
-      Notes and posts on integration, platforms, and what "AI-ready"
-      actually requires of an enterprise underneath the surface.
-    </p>
-    <div class="writing__grid">
-      <article class="writing__card" data-reveal>
-        <p class="writing__tag">#AgenticAI #Integration</p>
-        <h3>The agent gets the credit. The integration fabric does the work.</h3>
-        <p>
-          Most of the national and enterprise systems now enabling "AI
-          achievements" — governed data exchanges, secure APIs, shared
-          service fabrics — were built years before this model cycle.
-          The agent is the visible layer on top of infrastructure that
-          already had to earn enterprise trust the hard way.
-        </p>
-      </article>
-      <article class="writing__card" data-reveal>
-        <p class="writing__tag">#iPaaS #EnterpriseArchitecture</p>
-        <h3>Operational efficiency is a feature, not a footnote</h3>
-        <p>
-          Cleaner interfaces, saner runtime key management, automatic
-          cleanup of stale instances — the unglamorous releases are
-          usually the ones that determine whether a platform team
-          actually wants to keep using your product.
-        </p>
-      </article>
-      <article class="writing__card" data-reveal>
-        <p class="writing__tag">#APIManagement #DigitalGovernment</p>
-        <h3>What public-sector integration gets right</h3>
-        <p>
-          Systems built for cross-agency data exchange are forced to
-          solve governance, consent, and interoperability before they're
-          allowed to scale. Enterprises building AI agents are running
-          into the same requirements — just later, and under more
-          pressure.
-        </p>
-      </article>
-    </div>
-    <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener" class="writing__more">Read more on LinkedIn ↗</a>
-  </div>
-</section>
+    <!-- SECTION 1: /ABOUT (Cream Reading Band) -->
+    <section class="section-cream" id="about">
+      <div class="container">
+        <span class="route-prefix">/about // OPERATING_PRINCIPLE</span>
 
-<!-- ===== CONTACT ===== -->
-<section class="section section--paper contact" id="contact">
-  <div class="container contact__grid">
-    <div>
-      <p class="section__eyebrow">/contact</p>
-      <h2 class="section__title">
-        Open to conversations on integration, platforms, and where
-        enterprise AI is actually headed.
-      </h2>
-      <p class="contact__note">
-        Best reached on LinkedIn — that's where most of these
-        conversations start anyway.
-      </p>
-    </div>
-    <div class="contact__panel">
-      <a href="https://www.linkedin.com/in/linkabhinav/" target="_blank" rel="noopener" class="contact__row">
-        <span>LinkedIn</span>
-        <span class="contact__value">/in/linkabhinav ↗</span>
-      </a>
-      <div class="contact__row">
-        <span>Role</span>
-        <span class="contact__value">Product Manager, AI Integration — IBM</span>
+        <div class="about-split">
+          <h2 class="about-headline">
+            System resilience precedes model intelligence. If the infrastructure sways, the agent fails.
+          </h2>
+
+          <div class="about-copy">
+            <p>
+              I view artificial intelligence not as a standalone user interface feature, but as a complex <strong>distributed system challenge</strong>. Modern enterprise AI initiatives rarely fail because a language model lacks reasoning capability — they fail because orchestration, deterministic schema verification, context propagation, and runtime governance are missing.
+            </p>
+            <p>
+              Across a decade spanning hands-on software development, enterprise integration architecture (Arrow & Infineon), full-time strategic management at <strong>IIM Ahmedabad</strong>, and product leadership at <strong>IBM webMethods</strong>, I have specialized in turning raw engineering capability into reliable enterprise platforms.
+            </p>
+
+            <div class="about-spec-grid">
+              <div class="spec-item">
+                <span class="spec-label">CURRENT ROLE</span>
+                <span class="spec-value">Product Manager @ IBM</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">CORE DOMAIN</span>
+                <span class="spec-value">Hybrid Integration & AI</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">PREVIOUS ARCHITECTURE</span>
+                <span class="spec-value">Arrow / Infineon Tech Lead</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">STRATEGY FOUNDATION</span>
+                <span class="spec-value">MBA, IIM Ahmedabad</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contact__row">
-        <span>Based in</span>
-        <span class="contact__value">Bengaluru, India</span>
+    </section>
+
+    <!-- SECTION 2: /FOCUS (Dark Architecture Cards) -->
+    <section class="section-dark" id="focus">
+      <div class="container">
+        <div class="focus-header-group">
+          <span class="route-prefix">/focus // ATTENTION_ALLOCATION</span>
+          <h2 class="focus-headline">Where I Spend My Attention</h2>
+        </div>
+
+        <div class="focus-grid">
+          <!-- Item 01 -->
+          <div class="focus-card">
+            <div class="focus-card-header">
+              <span class="focus-route">req.route 01</span>
+              <i class="fa-solid fa-diagram-project text-gold"></i>
+            </div>
+            <div>
+              <h3 class="focus-title">Agentic Orchestration</h3>
+              <p class="focus-desc">
+                Designing state machines, dynamic routing protocols, and multi-agent consensus loops that ensure agentic workflows execute reliably within enterprise SLAs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 02 -->
+          <div class="focus-card">
+            <div class="focus-card-header">
+              <span class="focus-route">req.route 02</span>
+              <i class="fa-solid fa-database text-gold"></i>
+            </div>
+            <div>
+              <h3 class="focus-title">Semantic & Context Buses</h3>
+              <p class="focus-desc">
+                Standardizing real-time schema alignment, memory persistence, and streaming context delivery across fragmented hybrid cloud environments.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 03 -->
+          <div class="focus-card">
+            <div class="focus-card-header">
+              <span class="focus-route">req.route 03</span>
+              <i class="fa-solid fa-shield-halved text-gold"></i>
+            </div>
+            <div>
+              <h3 class="focus-title">Continuous Evaluation & Guardrails</h3>
+              <p class="focus-desc">
+                Building sub-15ms proxy evaluation layers, deterministic security guardrails, and compliance audit logging for non-deterministic model outputs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 04 -->
+          <div class="focus-card">
+            <div class="focus-card-header">
+              <span class="focus-route">req.route 04</span>
+              <i class="fa-solid fa-code-compare text-gold"></i>
+            </div>
+            <div>
+              <h3 class="focus-title">Low-Code / Pro-Code Alignment</h3>
+              <p class="focus-desc">
+                Empowering domain specialists with visual flow builders while giving senior engineers raw code extensibility (Java 21 LTS, Avro, OpenAPI).
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 05 -->
+          <div class="focus-card">
+            <div class="focus-card-header">
+              <span class="focus-route">req.route 05</span>
+              <i class="fa-solid fa-key text-gold"></i>
+            </div>
+            <div>
+              <h3 class="focus-title">Zero-Trust Context Security</h3>
+              <p class="focus-desc">
+                Propagating SAML 2.0 / JWT identity claims through autonomous tool calls, ensuring credentials and sensitive data remain vaulted at rest and in transit.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 06 -->
+          <div class="focus-card">
+            <div class="focus-card-header">
+              <span class="focus-route">req.route 06</span>
+              <i class="fa-solid fa-calculator text-gold"></i>
+            </div>
+            <div>
+              <h3 class="focus-title">Total Cost of Inference (TCO)</h3>
+              <p class="focus-desc">
+                Optimizing model selection matrices, semantic cache hit rates, and token consumption budgets to maximize business ROI on enterprise AI deployments.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contact__row">
-        <span>Status</span>
-        <span class="contact__value contact__status"><span class="dot"></span>Building the fabric</span>
+    </section>
+
+    <!-- SECTION 3: /WORK (Cream Provenance Timeline) -->
+    <section class="section-cream" id="work">
+      <div class="container">
+        <span class="route-prefix">/work // PROVENANCE</span>
+
+        <div class="work-timeline">
+          <!-- Chapter 1 -->
+          <div class="work-item">
+            <div class="work-meta">
+              <span class="work-period">2024 — PRESENT</span>
+              <h3 class="work-company">IBM</h3>
+              <span class="work-location">BENGALURU / GLOBAL</span>
+            </div>
+            <div class="work-details">
+              <h4 class="work-role">Product Manager — AI Integration & webMethods</h4>
+              <p class="work-summary">
+                Steering product vision and engineering roadmap for IBM webMethods Hybrid Integration. Modernized the developer ecosystem with Java 21 LTS, native Apache Avro schema registries, dynamic flow constructs, and AI-assisted service generation for global Fortune 500 enterprises.
+              </p>
+              <div class="work-tags">
+                <span class="meta-tag meta-tag-cream">PRODUCT STRATEGY</span>
+                <span class="meta-tag meta-tag-cream">AI ORCHESTRATION</span>
+                <span class="meta-tag meta-tag-cream">HYBRID CLOUD</span>
+                <span class="meta-tag meta-tag-cream">ENTERPRISE SAAS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 2 -->
+          <div class="work-item">
+            <div class="work-meta">
+              <span class="work-period">2024</span>
+              <h3 class="work-company">Persistent Systems</h3>
+              <span class="work-location">INDIA / US</span>
+            </div>
+            <div class="work-details">
+              <h4 class="work-role">Product Strategy & Executive Advisory</h4>
+              <p class="work-summary">
+                Drove product management strategy at India’s top-performing IT Services firm. Translated complex software engineering and cloud capabilities into strategic go-to-market frameworks for strategic enterprise accounts.
+              </p>
+              <div class="work-tags">
+                <span class="meta-tag meta-tag-cream">GTM STRATEGY</span>
+                <span class="meta-tag meta-tag-cream">MARKET POSITIONING</span>
+                <span class="meta-tag meta-tag-cream">ENTERPRISE ACCOUNTS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 3 -->
+          <div class="work-item">
+            <div class="work-meta">
+              <span class="work-period">2022 — 2024</span>
+              <h3 class="work-company">IIM Ahmedabad</h3>
+              <span class="work-location">AHMEDABAD, INDIA</span>
+            </div>
+            <div class="work-details">
+              <h4 class="work-role">Full-Time MBA (PGPM)</h4>
+              <p class="work-summary">
+                Completed a flagship 2-year strategic management degree. Pivoted from core engineering architecture to corporate strategy, platform economics, market strategy, and financial modeling.
+              </p>
+              <div class="work-tags">
+                <span class="meta-tag meta-tag-cream">STRATEGIC MANAGEMENT</span>
+                <span class="meta-tag meta-tag-cream">MICROECONOMICS</span>
+                <span class="meta-tag meta-tag-cream">PLATFORM ECONOMICS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapter 4 -->
+          <div class="work-item">
+            <div class="work-meta">
+              <span class="work-period">2016 — 2022</span>
+              <h3 class="work-company">Arrow & Infineon</h3>
+              <span class="work-location">GLOBAL</span>
+            </div>
+            <div class="work-details">
+              <h4 class="work-role">Tech Lead & Integration Architect</h4>
+              <p class="work-summary">
+                Fast-tracked to become the youngest Tech Lead in Infineon corporate history. Architected high-throughput semiconductor integration middleware and global data supply chains at Arrow Electronics.
+              </p>
+              <div class="work-tags">
+                <span class="meta-tag meta-tag-cream">SYSTEM ARCHITECTURE</span>
+                <span class="meta-tag meta-tag-cream">HIGH-THROUGHPUT MESSAGING</span>
+                <span class="meta-tag meta-tag-cream">ENGINEERING LEADERSHIP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: /WRITING (Dark Notes & Monograph) -->
+    <section class="section-dark" id="writing">
+      <div class="container">
+        <span class="route-prefix">/writing // FIELD_NOTES</span>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+          <h2 class="focus-headline">Ideas You Keep Coming Back To</h2>
+        </div>
+
+        <div class="writing-list">
+          <!-- Essay 1 -->
+          <a href="#" class="writing-card" onclick="alert('Essay link clicked: The Context Bus'); return false;">
+            <div class="writing-header">
+              <span class="writing-date">ARCHIVE NOTE // 2026</span>
+              <i class="fa-solid fa-arrow-right text-gold"></i>
+            </div>
+            <h3 class="writing-title">The Context Bus: Why Vector Databases Alone Cannot Solve Multi-Step Agent State</h3>
+            <p class="writing-excerpt">
+              Examining why vector retrieval lacks the transactional consistency needed for multi-step autonomous actions, and how enterprise integration patterns solve the agent memory gap.
+            </p>
+            <div class="writing-tags">
+              <span>#agent-runtime</span>
+              <span>#context-protocol</span>
+              <span>#enterprise-architecture</span>
+            </div>
+          </a>
+
+          <!-- Essay 2 -->
+          <a href="#" class="writing-card" onclick="alert('Essay link clicked: Deterministic Guardrails'); return false;">
+            <div class="writing-header">
+              <span class="writing-date">ARCHIVE NOTE // 2026</span>
+              <i class="fa-solid fa-arrow-right text-gold"></i>
+            </div>
+            <h3 class="writing-title">Deterministic Proxies for Non-Deterministic Models</h3>
+            <p class="writing-excerpt">
+              How to construct sub-15ms evaluation filters that audit and route LLM outputs without introducing latency bottlenecks in mission-critical applications.
+            </p>
+            <div class="writing-tags">
+              <span>#evals-at-scale</span>
+              <span>#safety-plane</span>
+              <span>#system-design</span>
+            </div>
+          </a>
+
+          <!-- Essay 3 -->
+          <a href="#" class="writing-card" onclick="alert('Essay link clicked: Decoupling Agent Logic'); return false;">
+            <div class="writing-header">
+              <span class="writing-date">ARCHIVE NOTE // 2025</span>
+              <i class="fa-solid fa-arrow-right text-gold"></i>
+            </div>
+            <h3 class="writing-title">The Decoupled Agent: Separating Prompt Logic from Microservice Execution</h3>
+            <p class="writing-excerpt">
+              Why hardcoding enterprise API logic into system prompts creates fragile technical debt, and why clean orchestration layers preserve system maintainability.
+            </p>
+            <div class="writing-tags">
+              <span>#decoupling-llms</span>
+              <span>#microservices</span>
+              <span>#orchestration</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: /CONTACT & FOOTER -->
+    <section class="section-dark contact-section" id="contact">
+      <div class="container">
+        <span class="route-prefix">/contact // DIRECT_LINE</span>
+
+        <h2 class="contact-invitation">
+          “Let’s build infrastructure that scales with the future of autonomous systems.”
+        </h2>
+
+        <div class="contact-actions">
+          <a href="https://www.linkedin.com/in/abhinavkumar" target="_blank" rel="noopener" class="btn-large-gold">
+            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+          </a>
+          <a href="mailto:abhinav.kumar@example.com" class="btn-large-outline">
+            <i class="fa-regular fa-envelope"></i> Send Email
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <span>ABHINAV KUMAR · PRODUCT MANAGER, AI INTEGRATION</span>
+      </div>
+
+      <div class="footer-status-bar">
+        <span>GET /status → 200 OK</span>
+        <span>LATENCY: &lt;24H</span>
+        <span>© 2026 ALL RIGHTS RESERVED</span>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer class="footer">
-  <div class="container footer__inner">
-    <p>© <span id="year"></span> Abhinav Kumar. </p>
-    <a href="#top" class="footer__top">Back to top ↑</a>
-  </div>
-</footer>
+  <!-- CANVAS SYSTEM GRAPH INTERACTIVE ANIMATION -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Nav Toggle
+      const mobileToggle = document.getElementById('mobileToggle');
+      const mainNav = document.getElementById('mainNav');
 
-<script src="assets/js/main.js"></script>
+      mobileToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('mobile-menu-active');
+      });
+
+      // Canvas Interactive Nodes System
+      const canvas = document.getElementById('systemCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const width = canvas.width;
+      const height = canvas.height;
+      const centerX = width / 2;
+      const centerY = height / 2;
+
+      // Central Node & Satellite Nodes Setup
+      const centralNode = {
+        x: centerX,
+        y: centerY,
+        radius: 28,
+        label: "AK",
+        sub: "AGENT PLANE"
+      };
+
+      const nodes = [
+        { label: "CONTEXT BUS", angle: 0, distance: 140, radius: 18, speed: 0.003 },
+        { label: "EVAL ENGINE", angle: (Math.PI * 2) / 6 * 1, distance: 145, radius: 18, speed: 0.0025 },
+        { label: "AGENT MESH", angle: (Math.PI * 2) / 6 * 2, distance: 135, radius: 18, speed: 0.0032 },
+        { label: "POLICY PLANE", angle: (Math.PI * 2) / 6 * 3, distance: 140, radius: 18, speed: 0.0028 },
+        { label: "SEMANTIC CACHE", angle: (Math.PI * 2) / 6 * 4, distance: 145, radius: 18, speed: 0.0035 },
+        { label: "RUNTIME RUNNER", angle: (Math.PI * 2) / 6 * 5, distance: 135, radius: 18, speed: 0.0027 }
+      ];
+
+      // Particles along edges
+      const particles = [];
+      for (let i = 0; i < 12; i++) {
+        particles.push({
+          nodeIndex: i % nodes.length,
+          progress: Math.random(),
+          speed: 0.004 + Math.random() * 0.004
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update node positions with slow orbital drift
+        nodes.forEach(node => {
+          node.angle += node.speed;
+          node.x = centerX + Math.cos(node.angle) * node.distance;
+          node.y = centerY + Math.sin(node.angle) * node.distance;
+        });
+
+        // Draw connecting edges
+        ctx.strokeStyle = 'rgba(201, 162, 39, 0.25)';
+        ctx.lineWidth = 1;
+        nodes.forEach(node => {
+          ctx.beginPath();
+          ctx.moveTo(centralNode.x, centralNode.y);
+          ctx.lineTo(node.x, node.y);
+          ctx.stroke();
+        });
+
+        // Draw animated traveling particles along edges
+        particles.forEach(p => {
+          p.progress += p.speed;
+          if (p.progress > 1) p.progress = 0;
+
+          const targetNode = nodes[p.nodeIndex];
+          const px = centralNode.x + (targetNode.x - centralNode.x) * p.progress;
+          const py = centralNode.y + (targetNode.y - centralNode.y) * p.progress;
+
+          ctx.fillStyle = '#C9A227';
+          ctx.beginPath();
+          ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Draw Satellite Nodes
+        nodes.forEach(node => {
+          // Node Circle
+          ctx.fillStyle = '#111726';
+          ctx.strokeStyle = '#C9A227';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          // Outer pulse ring
+          ctx.strokeStyle = 'rgba(201, 162, 39, 0.15)';
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius + 4, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Node Text Label
+          ctx.fillStyle = '#8A94A6';
+          ctx.font = '10px "JetBrains Mono", monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(node.label, node.x, node.y + node.radius + 14);
+        });
+
+        // Draw Central Monogram Node
+        ctx.fillStyle = '#0A0E18';
+        ctx.strokeStyle = '#C9A227';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(centralNode.x, centralNode.y, centralNode.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Central Outer Pulse Ring
+        ctx.strokeStyle = 'rgba(201, 162, 39, 0.3)';
+        ctx.beginPath();
+        ctx.arc(centralNode.x, centralNode.y, centralNode.radius + 6, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Central Monogram Text
+        ctx.fillStyle = '#E8ECEF';
+        ctx.font = 'bold 14px "Inter", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(centralNode.label, centralNode.x, centralNode.y);
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    });
+  </script>
 </body>
 </html>
